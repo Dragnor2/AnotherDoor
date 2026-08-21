@@ -1,0 +1,165 @@
+{
+  "0": {
+    "key": "default",
+    "sprite": "sprToken{0}",
+    "linked_effects": [],
+    "in_assignable_pool": false,
+    "notes": "fallback/no-token state",
+    "display_name": "REGULAR TOKEN",
+    "display_desc_template": "Allows you to select a card."
+  },
+  "1": {
+    "key": "dead",
+    "sprite": "sprTokenDead",
+    "linked_effects": [],
+    "in_assignable_pool": false,
+    "notes": "status marker; desc has a literal numeric substitution (value 3) baked in, not from an effect",
+    "display_name": "TOKEN OF THE DEAD",
+    "display_desc_template": "You played, you lost."
+  },
+  "2": {
+    "key": "left",
+    "sprite": "sprTokenLeft",
+    "linked_effects": [],
+    "in_assignable_pool": false,
+    "notes": "status marker (player left the round)",
+    "display_name": "WISE MAN'S TOKEN",
+    "display_desc_template": "You have chosen security."
+  },
+  "3": {
+    "key": "lostInTime",
+    "sprite": "sprTokenLostInTime",
+    "linked_effects": [],
+    "in_assignable_pool": true,
+    "notes": "static desc, no effect link",
+    "display_name": "TIME-LOST TOKEN",
+    "display_desc_template": "You can play after the other players."
+  },
+  "4": {
+    "key": "fourLeaf",
+    "sprite": "sprTokenFourLeaf",
+    "linked_effects": [
+      "cloverToken"
+    ],
+    "in_assignable_pool": true,
+    "display_name": "FOUR-LEAF CLOVER TOKEN",
+    "display_desc": "Lucky cards appear from time to time. Receive 5 gems each time you choose one."
+  },
+  "7": {
+    "key": "cursedLover",
+    "sprite": "sprTokenCursedLoverLeft",
+    "linked_effects": [
+      "cursedLoverDeath",
+      "cursedLoverSameChoice"
+    ],
+    "in_assignable_pool": false,
+    "notes": "left-side variant of a paired token",
+    "display_name": "TOKEN OF THE STAR-CROSSED LOVERS",
+    "display_desc": "Whenever Lovers choose the same card both gain 3 HP. If one lover dies or leaves the game, the other receives 100 damage."
+  },
+  "8": {
+    "key": "cursedLover",
+    "sprite": "sprTokenCursedLoverRight",
+    "linked_effects": [
+      "cursedLoverDeath",
+      "cursedLoverSameChoice"
+    ],
+    "in_assignable_pool": false,
+    "notes": "right-side variant of a paired token",
+    "display_name": "TOKEN OF THE STAR-CROSSED LOVERS",
+    "display_desc": "Whenever Lovers choose the same card both gain 3 HP. If one lover dies or leaves the game, the other receives 100 damage."
+  },
+  "9": {
+    "key": "autocracy",
+    "sprite": "sprTokenAutocracy",
+    "linked_effects": [
+      "autocracy"
+    ],
+    "in_assignable_pool": true,
+    "notes": "static desc despite effect link",
+    "display_name": "AUTOCRACY TOKEN",
+    "display_desc_template": "When you leave the game, all other players are forced to choose ANOTHER DOOR."
+  },
+  "10": {
+    "key": "calculatedRisk",
+    "sprite": "sprTokenCalculatedRisk",
+    "linked_effects": [
+      "calculatedRisk"
+    ],
+    "in_assignable_pool": true,
+    "display_name": "CALCULATED RISK TOKEN",
+    "display_desc": "Secure 5 of your gems every time you choose ANOTHER DOOR."
+  },
+  "11": {
+    "key": "valor",
+    "sprite": "sprTokenValor",
+    "linked_effects": [
+      "valor"
+    ],
+    "in_assignable_pool": true,
+    "notes": "on-create: boosts owner's current+max HP by effect.valor.amount[0]",
+    "display_name": "TOKEN OF VALIANCE",
+    "display_desc": "Your maximum HP is now 10 and cannot exceed this amount. Damage and healing received cannot exceed 1 HP."
+  },
+  "12": {
+    "key": "blessed",
+    "sprite": "sprTokenBlessed",
+    "linked_effects": [
+      "blessed"
+    ],
+    "in_assignable_pool": true,
+    "notes": "on-create: boosts owner's current+max HP by effect.blessed.amount[0]",
+    "display_name": "BLESSED TOKEN",
+    "display_desc": "Your maximum HP is now 150. Receive half the gems when you leave."
+  },
+  "13": {
+    "key": "loniless",
+    "sprite": "sprTokenLoniless",
+    "linked_effects": [
+      "loniless"
+    ],
+    "in_assignable_pool": true,
+    "display_name": "LONELINESS TOKEN",
+    "display_desc": "Leaving the game at the same time as another player will earn you 3 times as many gems."
+  },
+  "15": {
+    "key": "philosopher",
+    "sprite": "sprTokenPhilosopher",
+    "linked_effects": [
+      "philosopherToken"
+    ],
+    "in_assignable_pool": true,
+    "notes": "on-create: boosts owner's current+max HP by effect.philosopherToken.amount[0]",
+    "display_name": "PHILOSOPHER'S STONE-SET TOKEN",
+    "display_desc": "Your maximum HP is now 50. If you suffer fatal damage, revive with both HP and maximum HP at 50 and no effects."
+  },
+  "18": {
+    "key": "vulture",
+    "sprite": "sprTokenVulture",
+    "linked_effects": [
+      "vulture"
+    ],
+    "in_assignable_pool": true,
+    "display_name": "VULTURE TOKEN",
+    "display_desc": "Each time a player dies or leaves the game, receive 30 HP."
+  },
+  "19": {
+    "key": "donkeyCap",
+    "sprite": "sprTokenDonkeyCap",
+    "linked_effects": [],
+    "in_assignable_pool": true,
+    "notes": "static desc, no effect link",
+    "display_name": "DUMB HAT TOKEN",
+    "display_desc_template": "Your indecision has granted you this wonderful token."
+  },
+  "20": {
+    "key": "can",
+    "sprite": "sprTokenCan",
+    "linked_effects": [
+      "tocanToken"
+    ],
+    "in_assignable_pool": true,
+    "display_name": "TO-CAN",
+    "display_desc": "When you die or leave the game a random living player gets the TO-CAN and loses 30% of their gems."
+  }
+}
