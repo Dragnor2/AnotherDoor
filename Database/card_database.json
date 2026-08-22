@@ -1,0 +1,6066 @@
+{
+  "schema_version": 1,
+  "game": "Another Door Demo",
+  "sources": {
+    "assembly_archive": "Assembly.7z",
+    "assembly_path": "Assembly/",
+    "localization": "stringsEN.json",
+    "repository": "Dragnor2/AnotherDoor"
+  },
+  "notes": {
+    "localization": "Cards reference stringsEN.json by name_key and description_key instead of duplicating localized text.",
+    "values": "Card mechanics were extracted from the cCards constructor calls in the ASM files.",
+    "arrays": "Numeric fields are kept as per-effect arrays because cCards stores them that way.",
+    "active_selection": "Active encounter membership is based on sMonsterList.asm: monstersForest plus the fixed/special forest placements in define_list.",
+    "unused": "Unused forest scripts are retained separately because they exist in Assembly but are not placed into the Demo forest encounter list by sMonsterList.asm."
+  },
+  "cCards_fields": {
+    "type": "argument3",
+    "action_type": "argument4",
+    "target_type": "argument5",
+    "amount": "argument6",
+    "stack": "argument7",
+    "damage_based": "argument8",
+    "stack_based": "argument9",
+    "chance": "argument10",
+    "chance_clusivity": "argument11",
+    "effect_required_to_activate": "argument12",
+    "effect_required_to_skip": "argument13",
+    "damage_times": "argument14"
+  },
+  "encounter_selection": {
+    "random_forest_pool": [
+      "luckyChest",
+      "starMole",
+      "hedgehog",
+      "snail",
+      "frog",
+      "keeper",
+      "sleepParalysis",
+      "oracle",
+      "wildBoar",
+      "ratten",
+      "forgottenSlime",
+      "unicorn",
+      "creepyRabbit",
+      "animalBinder"
+    ],
+    "fixed_or_special": [
+      "faun",
+      "shop",
+      "squirrelKing",
+      "funfair",
+      "babayaga",
+      "magicStump",
+      "fountainSorrowEmpty",
+      "watcher",
+      "timeLostWatcher",
+      "mommy",
+      "statue",
+      "unconsolableFawn",
+      "mother",
+      "hunter",
+      "dogHand",
+      "twoHeadedFawn",
+      "shepherdess",
+      "hybrid",
+      "dolly",
+      "sheep",
+      "maybeSheep",
+      "mushroomKnight"
+    ]
+  },
+  "encounters": {
+    "faun": {
+      "id": "faun",
+      "name": "MYSTERIOUS FAUN",
+      "name_key": "monster._faun",
+      "description_key": "monster._faunDesc",
+      "category": 6,
+      "script": "Assembly/gml_GlobalScript_forest_faun.asm",
+      "cards": [],
+      "cards_layout": [
+        []
+      ],
+      "mushroom_cards": [],
+      "activate_dialogue": {
+        "builtin": "activate_dialogue"
+      },
+      "monster_script_end": {
+        "builtin": "monster_script_end"
+      }
+    },
+    "shop": {
+      "id": "shop",
+      "name": "Ja...",
+      "name_key": "monster._shop",
+      "description_key": "monster._shopDesc",
+      "category": 7,
+      "script": "Assembly/gml_GlobalScript_forest_shop.asm",
+      "cards": [
+        "shop_card_0",
+        "shop_card_1",
+        "shop_card_2",
+        "shop_card_3"
+      ],
+      "cards_layout": [
+        [
+          "shopItem4",
+          "shopItem3",
+          "shopItem2",
+          "shopItem1"
+        ]
+      ],
+      "mushroom_cards": [],
+      "activate_dialogue": {
+        "function": "anon@1074@forest_shop@forest_shop"
+      },
+      "monster_script_end": null
+    },
+    "squirrelKing": {
+      "id": "squirrelKing",
+      "name": "SQUIRREL KING",
+      "name_key": "monster._squirrelKing",
+      "description_key": "monster._squirrelKingDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_squirrelKing.asm",
+      "cards": [
+        "squirrelKingLeft",
+        "squirrelKingRight",
+        "squirrelKingMushroom"
+      ],
+      "cards_layout": [
+        [
+          "squirrelKingRight",
+          "squirrelKingLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "squirrelKingMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "funfair": {
+      "id": "funfair",
+      "name": "FORSAKEN FUNFAIR",
+      "name_key": "monster._funfair",
+      "description_key": "monster._funfairDesc",
+      "category": 4,
+      "script": "Assembly/gml_GlobalScript_forest_funfair.asm",
+      "cards": [
+        "funFairGem",
+        "funFairGemPurse",
+        "funFairGemPurse",
+        "funFairGemBag"
+      ],
+      "cards_layout": [
+        [
+          "funFairPileOfGem",
+          "funFairGemPurse2",
+          "funFairGemPurse",
+          "funFairGemBag"
+        ]
+      ],
+      "mushroom_cards": [],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "babayaga": {
+      "id": "babayaga",
+      "name": "BABA YAGA'S IZBA",
+      "name_key": "monster._babayaga",
+      "description_key": "Desc Baba Yaga",
+      "category": 5,
+      "script": "Assembly/gml_GlobalScript_forest_babayaga.asm",
+      "cards": [
+        "babayagaStop"
+      ],
+      "cards_layout": [
+        [
+          "babayagaStop"
+        ]
+      ],
+      "mushroom_cards": [],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "magicStump": {
+      "id": "magicStump",
+      "name": "MAGIC STUMP",
+      "name_key": "monster._magicStump",
+      "description_key": "monster._magicStumpDesc",
+      "category": 3,
+      "script": "Assembly/gml_GlobalScript_forest_magicStump.asm",
+      "cards": [
+        "magicStumpLeft",
+        "magicStumpRight",
+        "magicStumpMushroom"
+      ],
+      "cards_layout": [
+        [
+          "magicStumpRight",
+          "magicStumpLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "magicStumpMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "fountainSorrowEmpty": {
+      "id": "fountainSorrowEmpty",
+      "name": "FOUNTAIN OF SORROW EMPTY",
+      "name_key": "monster._fountainSorrow",
+      "description_key": "monster._fountainSorrowDesc",
+      "category": 3,
+      "script": "Assembly/gml_GlobalScript_forest_fountainSorrowEmpty.asm",
+      "cards": [
+        "fountainSorrowEmptyLeft",
+        "fountainSorrowEmptyRight",
+        "fountainSorrowEmptyMushroom"
+      ],
+      "cards_layout": [
+        [
+          "fountainSorrowEmptyRight",
+          "fountainSorrowEmptyLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "fountainSorrowEmptyMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "watcher": {
+      "id": "watcher",
+      "name": "WATCHER IN THE WATER",
+      "name_key": "monster._watcher",
+      "description_key": "monster._watcherDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_watcher.asm",
+      "cards": [
+        "watcherLeft",
+        "watcherRight",
+        "watcherMushroom"
+      ],
+      "cards_layout": [
+        [
+          "watcherRight",
+          "watcherLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "watcherMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "timeLostWatcher": {
+      "id": "timeLostWatcher",
+      "name": "TIME-LOST WATCHER",
+      "name_key": "monster._lostTimeWatcher",
+      "description_key": "monster._lostTimeWatcherDesc",
+      "category": 3,
+      "script": "Assembly/gml_GlobalScript_forest_timeLostWatcher.asm",
+      "cards": [
+        "lostTimeWatcherLeft",
+        "lostTimeWatcherRight",
+        "lostTimeWatcherMushroom"
+      ],
+      "cards_layout": [
+        [
+          "lostTimeWatcherRight",
+          "lostTimeWatcherLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "lostTimeWatcherMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "mommy": {
+      "id": "mommy",
+      "name": "MOMMY LONG LEGS",
+      "name_key": "monster._mommy",
+      "description_key": "monster._mommyDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_mommy.asm",
+      "cards": [
+        "mommyLeft",
+        "mommyRight",
+        "mommyMushroom"
+      ],
+      "cards_layout": [
+        [
+          "mommyRight",
+          "mommyLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "mommyMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "statue": {
+      "id": "statue",
+      "name": "STATUE OF THE LAST CHANCE",
+      "name_key": "monster._statue",
+      "description_key": "monster._statueDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_statue.asm",
+      "cards": [
+        "statueLeft",
+        "statueForestRight"
+      ],
+      "cards_layout": [
+        [
+          "statueForestRight",
+          "statueForestLeft"
+        ]
+      ],
+      "mushroom_cards": null,
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "unconsolableFawn": {
+      "id": "unconsolableFawn",
+      "name": "INCONSOLABLE TWO-HEADED FAWN",
+      "name_key": "monster._unconsolableFawn",
+      "description_key": "monster._unconsolableFawnDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_unconsolableFawn.asm",
+      "cards": [
+        "unconsolableFawnLeft",
+        "unconsolableFawnRight",
+        "unconsolableFawnMushroom"
+      ],
+      "cards_layout": [
+        [
+          "unconsolableFawnRight",
+          "unconsolableFawnLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "unconsolableFawnMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "mother": {
+      "id": "mother",
+      "name": "MOTHER",
+      "name_key": "monster._mother",
+      "description_key": "monster._motherDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_mother.asm",
+      "cards": [
+        "motherLeft1",
+        "motherRight1",
+        "motherLeft2",
+        "motherRight2",
+        "motherLeft3",
+        "motherRight3",
+        "motherMushroom"
+      ],
+      "cards_layout": [
+        [
+          "motherRight3",
+          "motherLeft3"
+        ],
+        [
+          "motherRight2",
+          "motherLeft2"
+        ],
+        [
+          "motherRight1",
+          "motherLeft1"
+        ]
+      ],
+      "mushroom_cards": [
+        "motherMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "hunter": {
+      "id": "hunter",
+      "name": "HEADHUNTER",
+      "name_key": "monster._hunter",
+      "description_key": "monster._hunterDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_hunter.asm",
+      "cards": [
+        "hunterLeft",
+        "hunterRight",
+        "hunterMushroom"
+      ],
+      "cards_layout": [
+        [
+          "hunterRight",
+          "hunterLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "hunterMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "dogHand": {
+      "id": "dogHand",
+      "name": "BLOODHOUND WITH A KEEN NOSE",
+      "name_key": "monster._dogHand",
+      "description_key": "monster._dogHandDesc",
+      "category": 3,
+      "script": "Assembly/gml_GlobalScript_forest_dogHand.asm",
+      "cards": [
+        "dogHandLeft",
+        "dogHandRight",
+        "dogHandMushroom"
+      ],
+      "cards_layout": [
+        [
+          "dogHandRight",
+          "dogHandLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "dogHandMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "twoHeadedFawn": {
+      "id": "twoHeadedFawn",
+      "name": "TWO-HEADED FAWN",
+      "name_key": "monster._twoHeadedFawn",
+      "description_key": "monster._twoHeadedFawnDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_twoHeadedFawn.asm",
+      "cards": [
+        "twoHeadedFawnLeft",
+        "twoHeadedFawnRight",
+        "twoHeadedFawnMushroom"
+      ],
+      "cards_layout": [
+        [
+          "twoHeadedFawnRight",
+          "twoHeadedFawnLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "twoHeadedFawnMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "shepherdess": {
+      "id": "shepherdess",
+      "name": "SHEPHERDESS",
+      "name_key": "monster._shepherdess",
+      "description_key": "monster._shepherdessDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_shepherdess.asm",
+      "cards": [
+        "shepherdessLeft",
+        "shepherdessRight",
+        "shepherdessMushroom"
+      ],
+      "cards_layout": [
+        [
+          "shepherdessRight",
+          "shepherdessLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "shepherdessMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "hybrid": {
+      "id": "hybrid",
+      "name": "HYBRID CREATURE",
+      "name_key": "monster._hybrid",
+      "description_key": "monster._hybridDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_hybrid.asm",
+      "cards": [
+        "hybridLeft",
+        "hybridRight",
+        "hybridMushroom"
+      ],
+      "cards_layout": [
+        [
+          "hybridRight",
+          "hybridLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "hybridMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "dolly": {
+      "id": "dolly",
+      "name": "DOLLY N°X-{0}",
+      "name_key": "monster._dolly",
+      "description_key": "monster._dollyDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_dolly.asm",
+      "cards": [
+        "dollyLeft",
+        "dollyRight",
+        "dollyMushroom"
+      ],
+      "cards_layout": [
+        [
+          "dollyRight",
+          "dollyLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "dollyMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "sheep": {
+      "id": "sheep",
+      "name": "A VERY ORDINARY SHEEP",
+      "name_key": "monster._sheep",
+      "description_key": "monster._sheepDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_sheep.asm",
+      "cards": [
+        "sheepLeft",
+        "sheepRight",
+        "sheepMushroom"
+      ],
+      "cards_layout": [
+        [
+          "sheepRight",
+          "sheepLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "sheepMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "maybeSheep": {
+      "id": "maybeSheep",
+      "name": "MAYBE A SHEEP",
+      "name_key": "monster._maybeSheep",
+      "description_key": "monster._maybeSheepDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_maybeSheep.asm",
+      "cards": [
+        "maybeSheepLeft",
+        "maybeSheepRight",
+        "maybeSheepMushroom"
+      ],
+      "cards_layout": [
+        [
+          "maybeSheepRight",
+          "maybeSheepLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "maybeSheepMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "mushroomKnight": {
+      "id": "mushroomKnight",
+      "name": "MUSHROOM KNIGHT",
+      "name_key": "monster._mushroomKnight",
+      "description_key": "monster._mushroomKnightDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_mushroomKnight.asm",
+      "cards": [
+        "mushroomKnightLeft",
+        "mushroomKnightRight",
+        "mushroomKnightMushroom"
+      ],
+      "cards_layout": [
+        [
+          "mushroomKnightRight",
+          "mushroomKnightLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "mushroomKnightMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "luckyChest": {
+      "id": "luckyChest",
+      "name": "LUCKY CHEST",
+      "name_key": "monster._luckyChest",
+      "description_key": "monster._luckyChestDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_monster_luckyChest.asm",
+      "cards": [
+        "luckyChestLeft",
+        "luckyChestRight",
+        "luckyChestMushroom"
+      ],
+      "cards_layout": [
+        [
+          "luckyChestRight",
+          "luckyChestLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "luckyChestMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "starMole": {
+      "id": "starMole",
+      "name": "STAR-SHAPED CONDYLURE",
+      "name_key": "monster._starMole",
+      "description_key": "monster._starMoleDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_starMole.asm",
+      "cards": [
+        "starMoleLeft",
+        "starMoleRight",
+        "starMoleMushroom"
+      ],
+      "cards_layout": [
+        [
+          "starMoleRight",
+          "starMoleLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "starMoleMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "hedgehog": {
+      "id": "hedgehog",
+      "name": "TAXIDERMIED HEDGEHOG",
+      "name_key": "monster._hedgehog",
+      "description_key": "monster._hedgehogDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_hedgehog.asm",
+      "cards": [
+        "hedgehogLeft",
+        "hedgehogRight",
+        "hedgehogMushroom"
+      ],
+      "cards_layout": [
+        [
+          "hedgehogRight",
+          "hedgehogLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "hedgehogMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "snail": {
+      "id": "snail",
+      "name": "SNAIL IN POOR CONDITION",
+      "name_key": "monster._snail",
+      "description_key": "monster._snailDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_snail.asm",
+      "cards": [
+        "snailLeft",
+        "snailRight",
+        "snailMushroom"
+      ],
+      "cards_layout": [
+        [
+          "snailRight",
+          "snailLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "snailMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "frog": {
+      "id": "frog",
+      "name": "BIG WELL-FED TOAD",
+      "name_key": "monster._frog",
+      "description_key": "monster._frogDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_frog.asm",
+      "cards": [
+        "frogLeft",
+        "frogRight",
+        "frogMushroom"
+      ],
+      "cards_layout": [
+        [
+          "frogRight",
+          "frogLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "frogMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "keeper": {
+      "id": "keeper",
+      "name": "FOREST WARDEN",
+      "name_key": "monster._keeper",
+      "description_key": "monster._keeperDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_keeper.asm",
+      "cards": [
+        "keeperLeft",
+        "keeperRight",
+        "keeperMushroom"
+      ],
+      "cards_layout": [
+        [
+          "keeperRight",
+          "keeperLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "keeperMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "sleepParalysis": {
+      "id": "sleepParalysis",
+      "name": "SLEEP PARALYSIS",
+      "name_key": "monster._sleepParalysis",
+      "description_key": "monster._sleepParalysisDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_sleepParalysis.asm",
+      "cards": [
+        "sleepParalysisLeft",
+        "sleepParalysisRight",
+        "sleepParalysisMushroom"
+      ],
+      "cards_layout": [
+        [
+          "sleepParalysisRight",
+          "sleepParalysisLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "sleepParalysisMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "oracle": {
+      "id": "oracle",
+      "name": "THE ORACLE",
+      "name_key": "monster._oracle",
+      "description_key": "monster._oracleDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_oracle.asm",
+      "cards": [
+        "oracleLeft",
+        "oracleRight",
+        "oracleMushroom"
+      ],
+      "cards_layout": [
+        [
+          "oracleRight",
+          "oracleLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "oracleMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "wildBoar": {
+      "id": "wildBoar",
+      "name": "PUTRID BOAR",
+      "name_key": "monster._wildBoar",
+      "description_key": "monster._wildBoarDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_wildBoar.asm",
+      "cards": [
+        "wildBoarLeft",
+        "wildBoarRight",
+        "wildBoarMushroom"
+      ],
+      "cards_layout": [
+        [
+          "wildBoarRight",
+          "wildBoarLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "wildBoarMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "ratten": {
+      "id": "ratten",
+      "name": "RAT KING",
+      "name_key": "monster._ratten",
+      "description_key": "monster._rattenDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_ratten.asm",
+      "cards": [
+        "rattenLeft",
+        "rattenRight",
+        "rattenMushroom"
+      ],
+      "cards_layout": [
+        [
+          "rattenRight",
+          "rattenLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "rattenMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "forgottenSlime": {
+      "id": "forgottenSlime",
+      "name": "FORGOTTEN SLIME",
+      "name_key": "monster._forgottenSlime",
+      "description_key": "monster._forgottenSlimeDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_forgottenSlime.asm",
+      "cards": [
+        "slimeLeft",
+        "slimeRight",
+        "slimeMushroom"
+      ],
+      "cards_layout": [
+        [
+          "slimeRight",
+          "slimeLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "slimeMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "unicorn": {
+      "id": "unicorn",
+      "name": "BLIND UNICORN",
+      "name_key": "monster._unicorn",
+      "description_key": "Desc uni",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_blindUnicorn.asm",
+      "cards": [
+        "unicornLeft",
+        "unicornRight",
+        "unicornMushroom"
+      ],
+      "cards_layout": [
+        [
+          "unicornRight",
+          "unicornLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "unicornMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "creepyRabbit": {
+      "id": "creepyRabbit",
+      "name": "CHUBBY BUNNY",
+      "name_key": "monster._creepyRabbit",
+      "description_key": "monster._creepyRabbitDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_creepyRabbit.asm",
+      "cards": [
+        "creepyRabbitLeft",
+        "creepyRabbitRight",
+        "creepyRabbitMushroom"
+      ],
+      "cards_layout": [
+        [
+          "creepyRabbitRight",
+          "creepyRabbitLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "creepyRabbitMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    },
+    "animalBinder": {
+      "id": "animalBinder",
+      "name": "ANIMAL BINDER",
+      "name_key": "monster._animalBinder",
+      "description_key": "monster._animalBinderDesc",
+      "category": 0,
+      "script": "Assembly/gml_GlobalScript_forest_animalBinder.asm",
+      "cards": [
+        "animalBinderLeft",
+        "animalBinderRight",
+        "animalBinderMushroom"
+      ],
+      "cards_layout": [
+        [
+          "animalBinderRight",
+          "animalBinderLeft"
+        ]
+      ],
+      "mushroom_cards": [
+        "animalBinderMushroom"
+      ],
+      "activate_dialogue": null,
+      "monster_script_end": null
+    }
+  },
+  "cards": {
+    "shop_card_0": {
+      "id": "shop_card_0",
+      "name_key": null,
+      "description_key": null,
+      "sprite_ref": 16777430,
+      "type": 9,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_shop.asm"
+    },
+    "shop_card_1": {
+      "id": "shop_card_1",
+      "name_key": null,
+      "description_key": null,
+      "sprite_ref": 16777430,
+      "type": 9,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_shop.asm"
+    },
+    "shop_card_2": {
+      "id": "shop_card_2",
+      "name_key": null,
+      "description_key": null,
+      "sprite_ref": 16777430,
+      "type": 9,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_shop.asm"
+    },
+    "shop_card_3": {
+      "id": "shop_card_3",
+      "name_key": null,
+      "description_key": null,
+      "sprite_ref": 16777430,
+      "type": 9,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_shop.asm"
+    },
+    "squirrelKingLeft": {
+      "id": "squirrelKingLeft",
+      "name_key": "cards._squirrelKingLeft",
+      "description_key": "cards._squirrelKingLeftDesc",
+      "sprite_ref": 16777593,
+      "type": 1,
+      "action_type": [
+        "multiplyEffect"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        2
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_squirrelKing.asm"
+    },
+    "squirrelKingRight": {
+      "id": "squirrelKingRight",
+      "name_key": "cards._squirrelKingRight",
+      "description_key": "cards._squirrelKingRightDesc",
+      "sprite_ref": 16777595,
+      "type": 1,
+      "action_type": [
+        "deleteRandomEffect"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_squirrelKing.asm"
+    },
+    "squirrelKingMushroom": {
+      "id": "squirrelKingMushroom",
+      "name_key": "cards._squirrelKingMushroom",
+      "description_key": "cards._squirrelKingMushroomDesc",
+      "sprite_ref": 16777594,
+      "type": 4,
+      "action_type": [
+        "multiplyEffect"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        4
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_squirrelKing.asm"
+    },
+    "funFairGem": {
+      "id": "funFairGem",
+      "name_key": "cards._funFairGem",
+      "description_key": "cards._funFairGemDesc",
+      "sprite_ref": 16777480,
+      "type": 5,
+      "action_type": [
+        "gem"
+      ],
+      "target_type": [
+        6
+      ],
+      "amount": [
+        5
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_funfair.asm"
+    },
+    "funFairGemPurse": {
+      "id": "funFairGemPurse",
+      "name_key": "cards._funFairGemPurse",
+      "description_key": "cards._funFairGemDesc",
+      "sprite_ref": 16777481,
+      "type": 5,
+      "action_type": [
+        "gem"
+      ],
+      "target_type": [
+        6
+      ],
+      "amount": [
+        10
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_funfair.asm"
+    },
+    "funFairGemBag": {
+      "id": "funFairGemBag",
+      "name_key": "cards._funFairGemBag",
+      "description_key": "cards._funFairGemDesc",
+      "sprite_ref": 16777482,
+      "type": 5,
+      "action_type": [
+        "gem"
+      ],
+      "target_type": [
+        6
+      ],
+      "amount": [
+        25
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_funfair.asm"
+    },
+    "babayagaStop": {
+      "id": "babayagaStop",
+      "name_key": "cards._babayagaStop",
+      "description_key": "cards._babayagaStopDesc",
+      "sprite_ref": 16777570,
+      "type": 6,
+      "action_type": [
+        "gem"
+      ],
+      "target_type": [
+        15
+      ],
+      "amount": [
+        20
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_babayaga.asm"
+    },
+    "magicStumpLeft": {
+      "id": "magicStumpLeft",
+      "name_key": "cards._magicStumpLeft",
+      "description_key": "cards._magicStumpLeftDesc",
+      "sprite_ref": 16777520,
+      "type": 1,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        15
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_magicStump.asm"
+    },
+    "magicStumpRight": {
+      "id": "magicStumpRight",
+      "name_key": "cards._magicStumpRight",
+      "description_key": "cards._magicStumpRightDesc",
+      "sprite_ref": 16777522,
+      "type": 1,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        6
+      ],
+      "amount": [
+        30
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_magicStump.asm"
+    },
+    "magicStumpMushroom": {
+      "id": "magicStumpMushroom",
+      "name_key": "cards._magicStumpMushroom",
+      "description_key": "cards._magicStumpMushroomDesc",
+      "sprite_ref": 16777521,
+      "type": 4,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        7
+      ],
+      "amount": [
+        30
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_magicStump.asm"
+    },
+    "fountainSorrowEmptyLeft": {
+      "id": "fountainSorrowEmptyLeft",
+      "name_key": "cards._fountainSorrowEmptyLeft",
+      "description_key": "cards._fountainSorrowEmptyLeftDesc",
+      "sprite_ref": 16777472,
+      "type": 1,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          25,
+          5
+        ]
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        7
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_fountainSorrowEmpty.asm"
+    },
+    "fountainSorrowEmptyRight": {
+      "id": "fountainSorrowEmptyRight",
+      "name_key": "cards._fountainSorrowEmptyRight",
+      "description_key": "cards._fountainSorrowEmptyRightDesc",
+      "sprite_ref": 16777471,
+      "type": 1,
+      "action_type": [
+        "fountainFilled"
+      ],
+      "target_type": [
+        8
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_fountainSorrowEmpty.asm"
+    },
+    "fountainSorrowEmptyMushroom": {
+      "id": "fountainSorrowEmptyMushroom",
+      "name_key": "cards._fountainSorrowEmptyMushroom",
+      "description_key": "cards._fountainSorrowEmptyMushroomDesc",
+      "sprite_ref": 16777473,
+      "type": 4,
+      "action_type": [
+        "removeEffect"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        50
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_fountainSorrowEmpty.asm"
+    },
+    "watcherLeft": {
+      "id": "watcherLeft",
+      "name_key": "cards._watcherLeft",
+      "description_key": "cards._watcherLeftDesc",
+      "sprite_ref": 16777616,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        10
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_watcher.asm"
+    },
+    "watcherRight": {
+      "id": "watcherRight",
+      "name_key": "cards._watcherRight",
+      "description_key": "cards._watcherRightDesc",
+      "sprite_ref": 16777618,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        8
+      ],
+      "amount": [
+        25
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_watcher.asm"
+    },
+    "watcherMushroom": {
+      "id": "watcherMushroom",
+      "name_key": "cards._watcherMushroom",
+      "description_key": "cards._watcherMushroomDesc",
+      "sprite_ref": 16777617,
+      "type": 4,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        25
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_watcher.asm"
+    },
+    "lostTimeWatcherLeft": {
+      "id": "lostTimeWatcherLeft",
+      "name_key": "cards._lostTimeWatcherLeft",
+      "description_key": "cards._lostTimeWatcherLeftDesc",
+      "sprite_ref": 16777512,
+      "type": 1,
+      "action_type": [
+        "redPill"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        10
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_timeLostWatcher.asm"
+    },
+    "lostTimeWatcherRight": {
+      "id": "lostTimeWatcherRight",
+      "name_key": "cards._lostTimeWatcherRight",
+      "description_key": "cards._lostTimeWatcherRightDesc",
+      "sprite_ref": 16777514,
+      "type": 1,
+      "action_type": [
+        "convertHPRandomized"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          100,
+          1
+        ]
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        7
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_timeLostWatcher.asm"
+    },
+    "lostTimeWatcherMushroom": {
+      "id": "lostTimeWatcherMushroom",
+      "name_key": "cards._lostTimeWatcherMushroom",
+      "description_key": "cards._lostTimeWatcherMushroomDesc",
+      "sprite_ref": 16777513,
+      "type": 4,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        6
+      ],
+      "amount": [
+        50
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_timeLostWatcher.asm"
+    },
+    "mommyLeft": {
+      "id": "mommyLeft",
+      "name_key": "cards._mommyLeft",
+      "description_key": "cards._mommyLeftDesc",
+      "sprite_ref": 16777530,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        30
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mommy.asm"
+    },
+    "mommyRight": {
+      "id": "mommyRight",
+      "name_key": "cards._mommyRight",
+      "description_key": "cards._mommyRightDesc",
+      "sprite_ref": 16777532,
+      "type": 1,
+      "action_type": [
+        "hazardousTransport"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mommy.asm"
+    },
+    "mommyMushroom": {
+      "id": "mommyMushroom",
+      "name_key": "cards._mommyMushroom",
+      "description_key": "cards._mommyMushroomDesc",
+      "sprite_ref": 16777531,
+      "type": 4,
+      "action_type": [
+        "hazardousTransport"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        25
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mommy.asm"
+    },
+    "statueLeft": {
+      "id": "statueLeft",
+      "name_key": "cards._statueLeft",
+      "description_key": "cards._statueLeftDesc",
+      "sprite_ref": 16777599,
+      "type": 1,
+      "action_type": [
+        "rezurrection"
+      ],
+      "target_type": [
+        5
+      ],
+      "amount": [
+        5
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_statue.asm"
+    },
+    "statueForestRight": {
+      "id": "statueForestRight",
+      "name_key": "cards._statueForestRight",
+      "description_key": "cards._statueForestRightDesc",
+      "sprite_ref": 16777600,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        30
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        80
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_statue.asm"
+    },
+    "unconsolableFawnLeft": {
+      "id": "unconsolableFawnLeft",
+      "name_key": "cards._unconsolableFawnLeft",
+      "description_key": "cards._unconsolableFawnLeftDesc",
+      "sprite_ref": 16777610,
+      "type": 1,
+      "action_type": [
+        "gem"
+      ],
+      "target_type": [
+        7
+      ],
+      "amount": [
+        10
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_unconsolableFawn.asm"
+    },
+    "unconsolableFawnRight": {
+      "id": "unconsolableFawnRight",
+      "name_key": "cards._unconsolableFawnRight",
+      "description_key": "cards._unconsolableFawnRightDesc",
+      "sprite_ref": 16777612,
+      "type": 1,
+      "action_type": [
+        "gem"
+      ],
+      "target_type": [
+        7
+      ],
+      "amount": [
+        20
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_unconsolableFawn.asm"
+    },
+    "unconsolableFawnMushroom": {
+      "id": "unconsolableFawnMushroom",
+      "name_key": "cards._unconsolableFawnMushroom",
+      "description_key": "cards._unconsolableFawnMushroomDesc",
+      "sprite_ref": 16777611,
+      "type": 4,
+      "action_type": [
+        "gem"
+      ],
+      "target_type": [
+        6
+      ],
+      "amount": [
+        9
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_unconsolableFawn.asm"
+    },
+    "motherLeft1": {
+      "id": "motherLeft1",
+      "name_key": "cards._motherLeft1",
+      "description_key": "cards._motherLeft1Desc",
+      "sprite_ref": 16777533,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        5
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mother.asm"
+    },
+    "motherRight1": {
+      "id": "motherRight1",
+      "name_key": "cards._motherRight1",
+      "description_key": "cards._motherRight1Desc",
+      "sprite_ref": 16777533,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        8
+      ],
+      "amount": [
+        30
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mother.asm"
+    },
+    "motherLeft2": {
+      "id": "motherLeft2",
+      "name_key": "cards._motherLeft2",
+      "description_key": "cards._motherLeft2Desc",
+      "sprite_ref": 16777533,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          [
+            30,
+            5,
+            5,
+            5
+          ],
+          [
+            30,
+            5,
+            5
+          ],
+          [
+            30,
+            5
+          ],
+          [
+            15
+          ]
+        ]
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        5
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mother.asm"
+    },
+    "motherRight2": {
+      "id": "motherRight2",
+      "name_key": "cards._motherRight2",
+      "description_key": "cards._motherRight2Desc",
+      "sprite_ref": 16777533,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          [
+            5,
+            5,
+            5,
+            30
+          ],
+          [
+            5,
+            5,
+            30
+          ],
+          [
+            5,
+            30
+          ],
+          [
+            15
+          ]
+        ]
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        5
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mother.asm"
+    },
+    "motherLeft3": {
+      "id": "motherLeft3",
+      "name_key": "cards._motherLeft3",
+      "description_key": "cards._motherLeft3Desc",
+      "sprite_ref": 16777533,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        5
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        1
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mother.asm"
+    },
+    "motherRight3": {
+      "id": "motherRight3",
+      "name_key": "cards._motherRight3",
+      "description_key": "cards._motherRight3Desc",
+      "sprite_ref": 16777533,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        7
+      ],
+      "amount": [
+        50
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        1
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mother.asm"
+    },
+    "motherMushroom": {
+      "id": "motherMushroom",
+      "name_key": "cards._motherMushroom",
+      "description_key": "cards._motherMushroomDesc",
+      "sprite_ref": 16777537,
+      "type": 4,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mother.asm"
+    },
+    "hunterLeft": {
+      "id": "hunterLeft",
+      "name_key": "cards._hunterLeft",
+      "description_key": "cards._hunterLeftDesc",
+      "sprite_ref": 16777491,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        6
+      ],
+      "amount": [
+        25
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_hunter.asm"
+    },
+    "hunterRight": {
+      "id": "hunterRight",
+      "name_key": "cards._hunterRight",
+      "description_key": "cards._hunterRightDesc",
+      "sprite_ref": 16777493,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        14
+      ],
+      "amount": [
+        15
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_hunter.asm"
+    },
+    "hunterMushroom": {
+      "id": "hunterMushroom",
+      "name_key": "cards._hunterMushroom",
+      "description_key": "cards._hunterMushroomDesc",
+      "sprite_ref": 16777492,
+      "type": 4,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        5
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_hunter.asm"
+    },
+    "dogHandLeft": {
+      "id": "dogHandLeft",
+      "name_key": "cards._dogHandLeft",
+      "description_key": "cards._dogHandLeftDesc",
+      "sprite_ref": 16777462,
+      "type": 1,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        13
+      ],
+      "amount": [
+        15
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_dogHand.asm"
+    },
+    "dogHandRight": {
+      "id": "dogHandRight",
+      "name_key": "cards._dogHandRight",
+      "description_key": "cards._dogHandRightDesc",
+      "sprite_ref": 16777464,
+      "type": 1,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        12
+      ],
+      "amount": [
+        15
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_dogHand.asm"
+    },
+    "dogHandMushroom": {
+      "id": "dogHandMushroom",
+      "name_key": "cards._dogHandMushroom",
+      "description_key": "cards._dogHandMushroomDesc",
+      "sprite_ref": 16777463,
+      "type": 4,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        15
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_dogHand.asm"
+    },
+    "twoHeadedFawnLeft": {
+      "id": "twoHeadedFawnLeft",
+      "name_key": "cards._twoHeadedFawnLeft",
+      "description_key": "cards._twoHeadedFawnLeftDesc",
+      "sprite_ref": 16777607,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        15
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_twoHeadedFawn.asm"
+    },
+    "twoHeadedFawnRight": {
+      "id": "twoHeadedFawnRight",
+      "name_key": "cards._twoHeadedFawnRight",
+      "description_key": "cards._twoHeadedFawnRightDesc",
+      "sprite_ref": 16777609,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        30
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        50
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_twoHeadedFawn.asm"
+    },
+    "twoHeadedFawnMushroom": {
+      "id": "twoHeadedFawnMushroom",
+      "name_key": "cards._twoHeadedFawnMushroom",
+      "description_key": "cards._twoHeadedFawnMushroomDesc",
+      "sprite_ref": 16777608,
+      "type": 4,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        50
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        10
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_twoHeadedFawn.asm"
+    },
+    "shepherdessLeft": {
+      "id": "shepherdessLeft",
+      "name_key": "cards._shepherdessLeft",
+      "description_key": "cards._shepherdessLeftDesc",
+      "sprite_ref": 16777576,
+      "type": 1,
+      "action_type": [
+        "beeeh",
+        "beeehToHeal"
+      ],
+      "target_type": [
+        23,
+        0
+      ],
+      "amount": [
+        -1,
+        5
+      ],
+      "stack": [
+        -1,
+        -1
+      ],
+      "damage_based": [
+        0,
+        0
+      ],
+      "stack_based": [
+        0,
+        0
+      ],
+      "chance": [
+        100,
+        100
+      ],
+      "chance_clusivity": [
+        0,
+        0
+      ],
+      "effect_required_to_activate": [
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_shepherdess.asm"
+    },
+    "shepherdessRight": {
+      "id": "shepherdessRight",
+      "name_key": "cards._shepherdessRight",
+      "description_key": "cards._shepherdessRightDesc",
+      "sprite_ref": 16777578,
+      "type": 1,
+      "action_type": [
+        "beeeh",
+        "beeehToGem"
+      ],
+      "target_type": [
+        23,
+        0
+      ],
+      "amount": [
+        -1,
+        5
+      ],
+      "stack": [
+        -1,
+        -1
+      ],
+      "damage_based": [
+        0,
+        0
+      ],
+      "stack_based": [
+        0,
+        0
+      ],
+      "chance": [
+        100,
+        100
+      ],
+      "chance_clusivity": [
+        0,
+        0
+      ],
+      "effect_required_to_activate": [
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_shepherdess.asm"
+    },
+    "shepherdessMushroom": {
+      "id": "shepherdessMushroom",
+      "name_key": "cards._shepherdessMushroom",
+      "description_key": "cards._shepherdessMushroomDesc",
+      "sprite_ref": 16777577,
+      "type": 4,
+      "action_type": [
+        "beeeh",
+        "beeehToGem",
+        "beeehToHeal"
+      ],
+      "target_type": [
+        23,
+        0,
+        0,
+        0
+      ],
+      "amount": [
+        [
+          -1,
+          -1
+        ],
+        -1,
+        [
+          8,
+          1
+        ],
+        [
+          15,
+          1
+        ]
+      ],
+      "stack": [
+        -1,
+        -1,
+        -1
+      ],
+      "damage_based": [
+        7,
+        0,
+        7,
+        7
+      ],
+      "stack_based": [
+        0,
+        0,
+        0
+      ],
+      "chance": [
+        100,
+        100,
+        100
+      ],
+      "chance_clusivity": [
+        0,
+        0,
+        0
+      ],
+      "effect_required_to_activate": [
+        null,
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_shepherdess.asm"
+    },
+    "hybridLeft": {
+      "id": "hybridLeft",
+      "name_key": "cards._hybridLeft",
+      "description_key": "cards._hybridLeftDesc",
+      "sprite_ref": 16777494,
+      "type": 1,
+      "action_type": [
+        "tutorial",
+        "hybridExchange",
+        "beeeh"
+      ],
+      "target_type": [
+        0,
+        0,
+        0
+      ],
+      "amount": [
+        -1,
+        10,
+        -1
+      ],
+      "stack": [
+        -1,
+        -1,
+        1
+      ],
+      "damage_based": [
+        0,
+        0,
+        0
+      ],
+      "stack_based": [
+        0,
+        0,
+        0
+      ],
+      "chance": [
+        100,
+        10,
+        90
+      ],
+      "chance_clusivity": [
+        1,
+        1,
+        1
+      ],
+      "effect_required_to_activate": [
+        null,
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_hybrid.asm"
+    },
+    "hybridRight": {
+      "id": "hybridRight",
+      "name_key": "cards._hybridRight",
+      "description_key": "cards._hybridRightDesc",
+      "sprite_ref": 16777496,
+      "type": 1,
+      "action_type": [
+        "nothing"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_hybrid.asm"
+    },
+    "hybridMushroom": {
+      "id": "hybridMushroom",
+      "name_key": "cards._hybridMushroom",
+      "description_key": "cards._hybridMushroomDesc",
+      "sprite_ref": 16777495,
+      "type": 4,
+      "action_type": [
+        "beeeh"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        5
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        50
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_hybrid.asm"
+    },
+    "dollyLeft": {
+      "id": "dollyLeft",
+      "name_key": "cards._dollyLeft",
+      "description_key": "cards._dollyLeftDesc",
+      "sprite_ref": 16777465,
+      "type": 1,
+      "action_type": [
+        "beeeh"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        [
+          [
+            4,
+            3,
+            2,
+            1
+          ],
+          [
+            4,
+            2,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        2
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_dolly.asm"
+    },
+    "dollyRight": {
+      "id": "dollyRight",
+      "name_key": "cards._dollyRight",
+      "description_key": "cards._dollyRightDesc",
+      "sprite_ref": 16777467,
+      "type": 1,
+      "action_type": [
+        "beeeh"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        [
+          [
+            0,
+            1,
+            2,
+            8
+          ],
+          [
+            0,
+            1,
+            8
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            2
+          ]
+        ]
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        2
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_dolly.asm"
+    },
+    "dollyMushroom": {
+      "id": "dollyMushroom",
+      "name_key": "cards._dollyMushroom",
+      "description_key": "cards._dollyMushroomDesc",
+      "sprite_ref": 16777466,
+      "type": 4,
+      "action_type": [
+        "beeeh"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        4
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_dolly.asm"
+    },
+    "sheepLeft": {
+      "id": "sheepLeft",
+      "name_key": "cards._sheepLeft",
+      "description_key": "cards._sheepLeftDesc",
+      "sprite_ref": 16777573,
+      "type": 1,
+      "action_type": [
+        "beeeh"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_sheep.asm"
+    },
+    "sheepRight": {
+      "id": "sheepRight",
+      "name_key": "cards._sheepRight",
+      "description_key": "cards._sheepRightDesc",
+      "sprite_ref": 16777575,
+      "type": 1,
+      "action_type": [
+        "gem"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        5
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_sheep.asm"
+    },
+    "sheepMushroom": {
+      "id": "sheepMushroom",
+      "name_key": "cards._sheepMushroom",
+      "description_key": "cards._sheepMushroomDesc",
+      "sprite_ref": 16777574,
+      "type": 4,
+      "action_type": [
+        "beeeh"
+      ],
+      "target_type": [
+        7
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        4
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_sheep.asm"
+    },
+    "maybeSheepLeft": {
+      "id": "maybeSheepLeft",
+      "name_key": "cards._maybeSheepLeft",
+      "description_key": "cards._maybeSheepLeftDesc",
+      "sprite_ref": 16777523,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          [
+            0,
+            20,
+            30,
+            40
+          ],
+          [
+            0,
+            20,
+            40
+          ],
+          [
+            0,
+            40
+          ],
+          [
+            20
+          ]
+        ]
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        5
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_maybeSheep.asm"
+    },
+    "maybeSheepRight": {
+      "id": "maybeSheepRight",
+      "name_key": "cards._maybeSheepRight",
+      "description_key": "cards._maybeSheepRightDesc",
+      "sprite_ref": 16777525,
+      "type": 1,
+      "action_type": [
+        "beeeh",
+        "attackMaybeSheep"
+      ],
+      "target_type": [
+        23,
+        0
+      ],
+      "amount": [
+        -1,
+        5
+      ],
+      "stack": [
+        -1,
+        -1
+      ],
+      "damage_based": [
+        0,
+        0
+      ],
+      "stack_based": [
+        0,
+        0
+      ],
+      "chance": [
+        100,
+        100
+      ],
+      "chance_clusivity": [
+        0,
+        0
+      ],
+      "effect_required_to_activate": [
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_maybeSheep.asm"
+    },
+    "maybeSheepMushroom": {
+      "id": "maybeSheepMushroom",
+      "name_key": "cards._maybeSheepMushroom",
+      "description_key": "cards._maybeSheepMushroomDesc",
+      "sprite_ref": 16777524,
+      "type": 4,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          [
+            0,
+            0,
+            40,
+            0
+          ],
+          [
+            0,
+            40,
+            0
+          ],
+          [
+            40,
+            0
+          ],
+          [
+            20
+          ]
+        ]
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        5
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_maybeSheep.asm"
+    },
+    "mushroomKnightLeft": {
+      "id": "mushroomKnightLeft",
+      "name_key": "cards._mushroomKnightLeft",
+      "description_key": "cards._mushroomKnightLeftDesc",
+      "sprite_ref": 16777539,
+      "type": 1,
+      "action_type": [
+        "badTrip"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mushroomKnight.asm"
+    },
+    "mushroomKnightRight": {
+      "id": "mushroomKnightRight",
+      "name_key": "cards._mushroomKnightRight",
+      "description_key": "cards._mushroomKnightRightDesc",
+      "sprite_ref": 16777541,
+      "type": 1,
+      "action_type": [
+        "nothing"
+      ],
+      "target_type": [
+        -1
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mushroomKnight.asm"
+    },
+    "mushroomKnightMushroom": {
+      "id": "mushroomKnightMushroom",
+      "name_key": "cards._mushroomKnightMushroom",
+      "description_key": "cards._mushroomKnightMushroomDesc",
+      "sprite_ref": 16777540,
+      "type": 4,
+      "action_type": [
+        "badTrip"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        2
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_mushroomKnight.asm"
+    },
+    "luckyChestLeft": {
+      "id": "luckyChestLeft",
+      "name_key": "cards._luckyChestLeft",
+      "description_key": "cards._luckyChestLeftDesc",
+      "sprite_ref": 16777515,
+      "type": 2,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        8
+      ],
+      "amount": [
+        20
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_monster_luckyChest.asm"
+    },
+    "luckyChestRight": {
+      "id": "luckyChestRight",
+      "name_key": "cards._luckyChestRight",
+      "description_key": "cards._luckyChestRightDesc",
+      "sprite_ref": 16777517,
+      "type": 2,
+      "action_type": [
+        "gem",
+        "poison"
+      ],
+      "target_type": [
+        0,
+        0
+      ],
+      "amount": [
+        10,
+        -1
+      ],
+      "stack": [
+        -1,
+        1
+      ],
+      "damage_based": [
+        0,
+        0
+      ],
+      "stack_based": [
+        0,
+        0
+      ],
+      "chance": [
+        50,
+        50
+      ],
+      "chance_clusivity": [
+        1,
+        1
+      ],
+      "effect_required_to_activate": [
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_monster_luckyChest.asm"
+    },
+    "luckyChestMushroom": {
+      "id": "luckyChestMushroom",
+      "name_key": "cards._luckyChestMushroom",
+      "description_key": "cards._luckyChestMushroomDesc",
+      "sprite_ref": 16777516,
+      "type": 4,
+      "action_type": [
+        "gem"
+      ],
+      "target_type": [
+        22
+      ],
+      "amount": [
+        10
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_monster_luckyChest.asm"
+    },
+    "starMoleLeft": {
+      "id": "starMoleLeft",
+      "name_key": "cards._starMoleLeft",
+      "description_key": "cards._starMoleLeftDesc",
+      "sprite_ref": 16777596,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        10
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_starMole.asm"
+    },
+    "starMoleRight": {
+      "id": "starMoleRight",
+      "name_key": "cards._starMoleRight",
+      "description_key": "cards._starMoleRightDesc",
+      "sprite_ref": 16777598,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        11
+      ],
+      "amount": [
+        30
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_starMole.asm"
+    },
+    "starMoleMushroom": {
+      "id": "starMoleMushroom",
+      "name_key": "cards._starMoleMushroom",
+      "description_key": "cards._starMoleMushroomDesc",
+      "sprite_ref": 16777597,
+      "type": 4,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        7
+      ],
+      "amount": [
+        2
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        10
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_starMole.asm"
+    },
+    "hedgehogLeft": {
+      "id": "hedgehogLeft",
+      "name_key": "cards._hedgehogLeft",
+      "description_key": "cards._hedgehogLeftDesc",
+      "sprite_ref": 16777487,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          30,
+          1
+        ]
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        7
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_hedgehog.asm"
+    },
+    "hedgehogRight": {
+      "id": "hedgehogRight",
+      "name_key": "cards._hedgehogRight",
+      "description_key": "cards._hedgehogRightDesc",
+      "sprite_ref": 16777489,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        15
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_hedgehog.asm"
+    },
+    "hedgehogMushroom": {
+      "id": "hedgehogMushroom",
+      "name_key": "cards._hedgehogMushroom",
+      "description_key": "cards._hedgehogMushroomDesc",
+      "sprite_ref": 16777488,
+      "type": 4,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          15,
+          1
+        ]
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        7
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_hedgehog.asm"
+    },
+    "snailLeft": {
+      "id": "snailLeft",
+      "name_key": "cards._snailLeft",
+      "description_key": "cards._snailLeftDesc",
+      "sprite_ref": 16777587,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          [
+            30,
+            15,
+            5,
+            1
+          ],
+          [
+            30,
+            15,
+            1
+          ],
+          [
+            30,
+            1
+          ],
+          [
+            15
+          ]
+        ]
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        5
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_snail.asm"
+    },
+    "snailRight": {
+      "id": "snailRight",
+      "name_key": "cards._snailRight",
+      "description_key": "cards._snailRightDesc",
+      "sprite_ref": 16777589,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          [
+            1,
+            5,
+            15,
+            30
+          ],
+          [
+            1,
+            15,
+            30
+          ],
+          [
+            1,
+            30
+          ],
+          [
+            15
+          ]
+        ]
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        5
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_snail.asm"
+    },
+    "snailMushroom": {
+      "id": "snailMushroom",
+      "name_key": "cards._snailMushroom",
+      "description_key": "cards._snailMushroomDesc",
+      "sprite_ref": 16777588,
+      "type": 4,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        [
+          [
+            99,
+            0,
+            0,
+            0
+          ],
+          [
+            99,
+            0,
+            0
+          ],
+          [
+            99,
+            0
+          ],
+          [
+            99
+          ]
+        ]
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        5
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_snail.asm"
+    },
+    "frogLeft": {
+      "id": "frogLeft",
+      "name_key": "cards._frogLeft",
+      "description_key": "cards._frogLeftDesc",
+      "sprite_ref": 16777474,
+      "type": 1,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_frog.asm"
+    },
+    "frogRight": {
+      "id": "frogRight",
+      "name_key": "cards._frogRight",
+      "description_key": "cards._frogRightDesc",
+      "sprite_ref": 16777476,
+      "type": 1,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        9
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        3
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_frog.asm"
+    },
+    "frogMushroom": {
+      "id": "frogMushroom",
+      "name_key": "cards._frogMushroom",
+      "description_key": "cards._frogMushroomDesc",
+      "sprite_ref": 16777475,
+      "type": 4,
+      "action_type": [
+        "allPoisonToGem"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        2
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_frog.asm"
+    },
+    "keeperLeft": {
+      "id": "keeperLeft",
+      "name_key": "cards._keeperLeft",
+      "description_key": "cards._keeperLeftDesc",
+      "sprite_ref": 16777499,
+      "type": 1,
+      "action_type": [
+        "attack",
+        "gem"
+      ],
+      "target_type": [
+        0,
+        0
+      ],
+      "amount": [
+        20,
+        10
+      ],
+      "stack": [
+        -1,
+        -1
+      ],
+      "damage_based": [
+        0,
+        0
+      ],
+      "stack_based": [
+        0,
+        0
+      ],
+      "chance": [
+        20,
+        80
+      ],
+      "chance_clusivity": [
+        1,
+        1
+      ],
+      "effect_required_to_activate": [
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_keeper.asm"
+    },
+    "keeperRight": {
+      "id": "keeperRight",
+      "name_key": "cards._keeperRight",
+      "description_key": "cards._keeperRightDesc",
+      "sprite_ref": 16777501,
+      "type": 1,
+      "action_type": [
+        "attack",
+        "gem"
+      ],
+      "target_type": [
+        0,
+        0
+      ],
+      "amount": [
+        [
+          10,
+          1
+        ],
+        5
+      ],
+      "stack": [
+        -1,
+        -1
+      ],
+      "damage_based": [
+        7,
+        0
+      ],
+      "stack_based": [
+        0,
+        0
+      ],
+      "chance": [
+        100,
+        100
+      ],
+      "chance_clusivity": [
+        0,
+        0
+      ],
+      "effect_required_to_activate": [
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_keeper.asm"
+    },
+    "keeperMushroom": {
+      "id": "keeperMushroom",
+      "name_key": "cards._keeperMushroom",
+      "description_key": "cards._keeperMushroomDesc",
+      "sprite_ref": 16777500,
+      "type": 4,
+      "action_type": [
+        "attack",
+        "gem"
+      ],
+      "target_type": [
+        0,
+        0
+      ],
+      "amount": [
+        1,
+        10
+      ],
+      "stack": [
+        -1,
+        -1
+      ],
+      "damage_based": [
+        0,
+        0
+      ],
+      "stack_based": [
+        0,
+        0
+      ],
+      "chance": [
+        100,
+        100
+      ],
+      "chance_clusivity": [
+        0,
+        0
+      ],
+      "effect_required_to_activate": [
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_keeper.asm"
+    },
+    "sleepParalysisLeft": {
+      "id": "sleepParalysisLeft",
+      "name_key": "cards._sleepParalysisLeft",
+      "description_key": "cards._sleepParalysisLeftDesc",
+      "sprite_ref": 16777581,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        10
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        90
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_sleepParalysis.asm"
+    },
+    "sleepParalysisRight": {
+      "id": "sleepParalysisRight",
+      "name_key": "cards._sleepParalysisRight",
+      "description_key": "cards._sleepParalysisRightDesc",
+      "sprite_ref": 16777583,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        90
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        10
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_sleepParalysis.asm"
+    },
+    "sleepParalysisMushroom": {
+      "id": "sleepParalysisMushroom",
+      "name_key": "cards._sleepParalysisMushroom",
+      "description_key": "cards._sleepParalysisMushroomDesc",
+      "sprite_ref": 16777582,
+      "type": 4,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        100
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        1
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_sleepParalysis.asm"
+    },
+    "oracleLeft": {
+      "id": "oracleLeft",
+      "name_key": "cards._oracleLeft",
+      "description_key": "cards._oracleLeftDesc",
+      "sprite_ref": 16777546,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        9
+      ],
+      "amount": [
+        10
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_oracle.asm"
+    },
+    "oracleRight": {
+      "id": "oracleRight",
+      "name_key": "cards._oracleRight",
+      "description_key": "cards._oracleRightDesc",
+      "sprite_ref": 16777548,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        8
+      ],
+      "amount": [
+        25
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_oracle.asm"
+    },
+    "oracleMushroom": {
+      "id": "oracleMushroom",
+      "name_key": "cards._oracleMushroom",
+      "description_key": "cards._oracleMushroomDesc",
+      "sprite_ref": 16777547,
+      "type": 4,
+      "action_type": [
+        "oracleBlessing"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_oracle.asm"
+    },
+    "wildBoarLeft": {
+      "id": "wildBoarLeft",
+      "name_key": "cards._wildBoarLeft",
+      "description_key": "cards._wildBoarLeftDesc",
+      "sprite_ref": 16777440,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        7
+      ],
+      "amount": [
+        10
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_wildBoar.asm"
+    },
+    "wildBoarRight": {
+      "id": "wildBoarRight",
+      "name_key": "cards._wildBoarRight",
+      "description_key": "cards._wildBoarRightDesc",
+      "sprite_ref": 16777442,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        7
+      ],
+      "amount": [
+        30
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_wildBoar.asm"
+    },
+    "wildBoarMushroom": {
+      "id": "wildBoarMushroom",
+      "name_key": "cards._wildBoarMushroom",
+      "description_key": "cards._wildBoarMushroomDesc",
+      "sprite_ref": 16777441,
+      "type": 4,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        7
+      ],
+      "amount": [
+        20
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_wildBoar.asm"
+    },
+    "rattenLeft": {
+      "id": "rattenLeft",
+      "name_key": "cards._rattenLeft",
+      "description_key": "cards._rattenLeftDesc",
+      "sprite_ref": 16777564,
+      "type": 1,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        3
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        33.333
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_ratten.asm"
+    },
+    "rattenRight": {
+      "id": "rattenRight",
+      "name_key": "cards._rattenRight",
+      "description_key": "cards._rattenRightDesc",
+      "sprite_ref": 16777566,
+      "type": 1,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_ratten.asm"
+    },
+    "rattenMushroom": {
+      "id": "rattenMushroom",
+      "name_key": "cards._rattenMushroom",
+      "description_key": "cards._rattenMushroomDesc",
+      "sprite_ref": 16777565,
+      "type": 4,
+      "action_type": [
+        "antidote"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_ratten.asm"
+    },
+    "slimeLeft": {
+      "id": "slimeLeft",
+      "name_key": "cards._slimeLeft",
+      "description_key": "cards._slimeLeftDesc",
+      "sprite_ref": 16777584,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        13
+      ],
+      "amount": [
+        20
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_forgottenSlime.asm"
+    },
+    "slimeRight": {
+      "id": "slimeRight",
+      "name_key": "cards._slimeRight",
+      "description_key": "cards._slimeRightDesc",
+      "sprite_ref": 16777586,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        12
+      ],
+      "amount": [
+        20
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_forgottenSlime.asm"
+    },
+    "slimeMushroom": {
+      "id": "slimeMushroom",
+      "name_key": "cards._slimeMushroom",
+      "description_key": "cards._slimeMushroomDesc",
+      "sprite_ref": 16777585,
+      "type": 4,
+      "action_type": [
+        "attack",
+        "gem"
+      ],
+      "target_type": [
+        7,
+        6
+      ],
+      "amount": [
+        20,
+        10
+      ],
+      "stack": [
+        -1,
+        -1
+      ],
+      "damage_based": [
+        0,
+        0
+      ],
+      "stack_based": [
+        0,
+        0
+      ],
+      "chance": [
+        100,
+        100
+      ],
+      "chance_clusivity": [
+        0,
+        0
+      ],
+      "effect_required_to_activate": [
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_forgottenSlime.asm"
+    },
+    "unicornLeft": {
+      "id": "unicornLeft",
+      "name_key": "cards._unicornLeft",
+      "description_key": "cards._unicornLeftDesc",
+      "sprite_ref": 16777613,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        15
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_blindUnicorn.asm"
+    },
+    "unicornRight": {
+      "id": "unicornRight",
+      "name_key": "cards._unicornRight",
+      "description_key": "cards._unicornRightDesc",
+      "sprite_ref": 16777615,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        7
+      ],
+      "amount": [
+        75
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_blindUnicorn.asm"
+    },
+    "unicornMushroom": {
+      "id": "unicornMushroom",
+      "name_key": "cards._unicornMushroom",
+      "description_key": "cards._unicornMushroomDesc",
+      "sprite_ref": 16777614,
+      "type": 4,
+      "action_type": [
+        "trapped",
+        "heal"
+      ],
+      "target_type": [
+        0,
+        0
+      ],
+      "amount": [
+        -1,
+        25
+      ],
+      "stack": [
+        1,
+        -1
+      ],
+      "damage_based": [
+        0,
+        0
+      ],
+      "stack_based": [
+        0,
+        0
+      ],
+      "chance": [
+        100,
+        100
+      ],
+      "chance_clusivity": [
+        0,
+        0
+      ],
+      "effect_required_to_activate": [
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_blindUnicorn.asm"
+    },
+    "creepyRabbitLeft": {
+      "id": "creepyRabbitLeft",
+      "name_key": "cards._creepyRabbitLeft",
+      "description_key": "cards._creepyRabbitLeftDesc",
+      "sprite_ref": 16777457,
+      "type": 1,
+      "action_type": [
+        "attack",
+        "attack"
+      ],
+      "target_type": [
+        7,
+        6
+      ],
+      "amount": [
+        30,
+        5
+      ],
+      "stack": [
+        -1,
+        -1
+      ],
+      "damage_based": [
+        0,
+        0
+      ],
+      "stack_based": [
+        0,
+        0
+      ],
+      "chance": [
+        100,
+        100
+      ],
+      "chance_clusivity": [
+        0,
+        0
+      ],
+      "effect_required_to_activate": [
+        null,
+        null
+      ],
+      "effect_required_to_skip": [
+        null,
+        null
+      ],
+      "damage_times": [
+        -1,
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_creepyRabbit.asm"
+    },
+    "creepyRabbitRight": {
+      "id": "creepyRabbitRight",
+      "name_key": "cards._creepyRabbitRight",
+      "description_key": "cards._creepyRabbitRightDesc",
+      "sprite_ref": 16777459,
+      "type": 1,
+      "action_type": [
+        "attack"
+      ],
+      "target_type": [
+        15
+      ],
+      "amount": [
+        15
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_creepyRabbit.asm"
+    },
+    "creepyRabbitMushroom": {
+      "id": "creepyRabbitMushroom",
+      "name_key": "cards._creepyRabbitMushroom",
+      "description_key": "cards._creepyRabbitMushroomDesc",
+      "sprite_ref": 16777458,
+      "type": 4,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        17
+      ],
+      "amount": [
+        15
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_creepyRabbit.asm"
+    },
+    "animalBinderLeft": {
+      "id": "animalBinderLeft",
+      "name_key": "cards._animalBinderLeft",
+      "description_key": "cards._animalBinderLeftDesc",
+      "sprite_ref": 16777432,
+      "type": 1,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        13
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        2
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_animalBinder.asm"
+    },
+    "animalBinderRight": {
+      "id": "animalBinderRight",
+      "name_key": "cards._animalBinderRight",
+      "description_key": "cards._animalBinderRightDesc",
+      "sprite_ref": 16777434,
+      "type": 1,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        12
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        2
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_animalBinder.asm"
+    },
+    "animalBinderMushroom": {
+      "id": "animalBinderMushroom",
+      "name_key": "cards._animalBinderMushroom",
+      "description_key": "cards._animalBinderMushroomDesc",
+      "sprite_ref": 16777433,
+      "type": 4,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        8
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        2
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_animalBinder.asm"
+    }
+  },
+  "unused_assembly_encounters": {
+    "doopelganger": {
+      "id": "doopelganger",
+      "script": "Assembly/gml_GlobalScript_forest_doopelganger.asm",
+      "name_key": "monster._doopelganger",
+      "description_key": "monster._doopelgangerDesc",
+      "cards": [
+        "doopelgangerLeft",
+        "doopelgangerRight",
+        "doopelgangerMushroom"
+      ],
+      "cards_layout": [
+        "doopelgangerMushroom"
+      ]
+    },
+    "fearlessAdventurerCorpse": {
+      "id": "fearlessAdventurerCorpse",
+      "script": "Assembly/gml_GlobalScript_forest_fearlessAdventurerCorpse.asm",
+      "name_key": "monster._fearlessAdventurerCorpse",
+      "description_key": "monster._fearlessAdventurerCorpseDesc",
+      "cards": [
+        "fearlessAdventurerCorpseLeft",
+        "fearlessAdventurerCorpseRight",
+        "fearlessAdventurerCorpseMushroom"
+      ],
+      "cards_layout": [
+        "fearlessAdventurerCorpseMushroom"
+      ]
+    },
+    "fountainSorrow": {
+      "id": "fountainSorrow",
+      "script": "Assembly/gml_GlobalScript_forest_fountainSorrow.asm",
+      "name_key": "monster._fountainSorrow",
+      "description_key": "monster._fountainSorrowDesc",
+      "cards": [
+        "fountainSorrowLeft",
+        "fountainSorrowMushroom"
+      ],
+      "cards_layout": [
+        [
+          "fountainSorrowLeft"
+        ]
+      ]
+    },
+    "maybeWolf": {
+      "id": "maybeWolf",
+      "script": "Assembly/gml_GlobalScript_forest_maybeWolf.asm",
+      "name_key": null,
+      "description_key": null,
+      "cards": [],
+      "cards_layout": null
+    }
+  },
+  "unused_assembly_cards": {
+    "doopelgangerLeft": {
+      "id": "doopelgangerLeft",
+      "name_key": "cards._doopelgangerLeft",
+      "description_key": "cards._doopelgangerLeftDesc",
+      "sprite_ref": 16777554,
+      "type": 1,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        3
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_doopelganger.asm"
+    },
+    "doopelgangerRight": {
+      "id": "doopelgangerRight",
+      "name_key": "cards._doopelgangerRight",
+      "description_key": "cards._doopelgangerRightDesc",
+      "sprite_ref": 16777554,
+      "type": 1,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_doopelganger.asm"
+    },
+    "doopelgangerMushroom": {
+      "id": "doopelgangerMushroom",
+      "name_key": "cards._doopelgangerMushroom",
+      "description_key": "cards._doopelgangerMushroomDesc",
+      "sprite_ref": 16777554,
+      "type": 4,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        1
+      ],
+      "stack": [
+        1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_doopelganger.asm"
+    },
+    "fearlessAdventurerCorpseLeft": {
+      "id": "fearlessAdventurerCorpseLeft",
+      "name_key": "cards._fearlessAdventurerCorpseLeft",
+      "description_key": "cards._fearlessAdventurerCorpseLeftDesc",
+      "sprite_ref": 16777554,
+      "type": 1,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_fearlessAdventurerCorpse.asm"
+    },
+    "fearlessAdventurerCorpseRight": {
+      "id": "fearlessAdventurerCorpseRight",
+      "name_key": "cards._fearlessAdventurerCorpseRight",
+      "description_key": "cards._fearlessAdventurerCorpseRightDesc",
+      "sprite_ref": 16777554,
+      "type": 1,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_fearlessAdventurerCorpse.asm"
+    },
+    "fearlessAdventurerCorpseMushroom": {
+      "id": "fearlessAdventurerCorpseMushroom",
+      "name_key": "cards._fearlessAdventurerCorpseMushroom",
+      "description_key": "cards._fearlessAdventurerCorpseMushroomDesc",
+      "sprite_ref": 16777554,
+      "type": 4,
+      "action_type": [
+        "poison"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_fearlessAdventurerCorpse.asm"
+    },
+    "fountainSorrowLeft": {
+      "id": "fountainSorrowLeft",
+      "name_key": "cards._fountainSorrowLeft",
+      "description_key": "cards._fountainSorrowLeftDesc",
+      "sprite_ref": 16777472,
+      "type": 1,
+      "action_type": [
+        "heal"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        30
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_fountainSorrow.asm"
+    },
+    "fountainSorrowMushroom": {
+      "id": "fountainSorrowMushroom",
+      "name_key": "cards._fountainSorrowMushroom",
+      "description_key": "cards._fountainSorrowMushroomDesc",
+      "sprite_ref": 16777473,
+      "type": 4,
+      "action_type": [
+        "removeEffect"
+      ],
+      "target_type": [
+        0
+      ],
+      "amount": [
+        -1
+      ],
+      "stack": [
+        -1
+      ],
+      "damage_based": [
+        0
+      ],
+      "stack_based": [
+        0
+      ],
+      "chance": [
+        100
+      ],
+      "chance_clusivity": [
+        0
+      ],
+      "effect_required_to_activate": [
+        null
+      ],
+      "effect_required_to_skip": [
+        null
+      ],
+      "damage_times": [
+        -1
+      ],
+      "source_script": "Assembly/gml_GlobalScript_forest_fountainSorrow.asm"
+    }
+  }
+}
